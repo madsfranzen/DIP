@@ -11,4 +11,4 @@ for (let i = list.length - 1; i >= 0; i--) {
   }
 }
 
-console.log(list.toString()); // => 0,1,2,4,7,8,9,13,16
+console.log(list.toString()); // => 0,1,2,4,7,8,913,16
