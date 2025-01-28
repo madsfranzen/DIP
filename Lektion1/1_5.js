@@ -6,7 +6,7 @@ function findPrime(x) {
   let primes = [2, 3];
 
   for (let i = 5; i <= x; i += 2) {
-    let isPrime = true
+    let isPrime = true;
     const sqrt = Math.sqrt(i);
 
     for (const prime of primes) {
@@ -22,4 +22,4 @@ function findPrime(x) {
   return primes;
 }
 
-console.log(findPrime(100));
+console.log(findPrime(10000000));
