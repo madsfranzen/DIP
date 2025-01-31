@@ -3,22 +3,22 @@
 //Lav et program, der udskriver alle primtal op til og med et givet positivt heltal.
 
 function findPrime(x) {
-    let primes = [2, 3]
+    let primes = [2, 3];
     for (let i = 5; i <= x; i += 2) {
-        let isPrime = true
-        const sqrt = Math.sqrt(i)
+        let isPrime = true;
+        const sqrt = Math.sqrt(i);
 
         for (const prime of primes) {
-            if (prime > sqrt) break
+            if (prime > sqrt) break;
 
             if (i % prime === 0) {
-                isPrime = false
-                break
+                isPrime = false;
+                break;
             }
         }
-        if (isPrime) primes.push(i)
+        if (isPrime) primes.push(i);
     }
-    return primes
+    return primes;
 }
 
-console.log(findPrime(10000000).length)
+console.log(findPrime(100000))
