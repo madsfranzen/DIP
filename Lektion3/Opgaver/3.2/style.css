@@ -1,0 +1,17 @@
+h1 {
+	color: blue;
+}
+
+img {
+	height: 100px;
+	width: 70px;
+	object-fit: cover;
+	padding: 10px;
+}
+
+table,
+th,
+td {
+	border: 5px solid blue;
+	border-collapse: collapse;
+}
