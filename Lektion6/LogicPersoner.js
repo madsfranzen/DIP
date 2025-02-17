@@ -1,4 +1,4 @@
-import { listPersoner } from "./Storage.js";
+import { listPersoner } from './Storage.js';
 
 export function addPerson(navn, alder) {
 	if (!navn || navn.trim() === '') {
@@ -15,9 +15,12 @@ export function addPerson(navn, alder) {
 }
 
 export function findPerson(navn) {
-	return listPersoner.find(person => person.navn.toLowerCase() === navn.toLowerCase());
+	return listPersoner.find(
+		(person) => person.navn.toLowerCase() === navn.toLowerCase()
+	);
 }
 
 export function filterByAge(alder) {
-	return listPersoner.filter(person => person.alder >= alder);
+	return listPersoner.filter((person) => person.alder >= alder);
 }
+
