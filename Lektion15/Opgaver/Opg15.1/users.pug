@@ -1,0 +1,16 @@
+link(rel='stylesheet', type='text/css', href='/style.css')
+
+body 
+    h1 Users
+table
+    tr
+        th Name
+        th Email
+        th Phone
+        th Location
+    each user in users
+        tr
+            td= user.name.first + " " + user.name.last
+            td= user.email
+            td= user.phone
+            td= user.location.city + ", " + user.location.state + ", " + user.location.country

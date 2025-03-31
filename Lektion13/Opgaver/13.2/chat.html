@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Klient</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chat Klient</h1>
+        </header>
+        
+        <div class="control-panel">
+            <div class="room-select-container">
+                <label for="room-select">Vælg chatrum:</label>
+                <select id="room-select">
+                    <option value="all">Alle beskeder</option>
+                    <!-- Chatrum vil blive indlæst dynamisk her -->
+                </select>
+            </div>
+            
+            <div class="auto-refresh">
+                <label>
+                    <input type="checkbox" id="auto-refresh-toggle" checked>
+                    Auto-opdatering
+                </label>
+                <button id="refresh-button">Opdater nu</button>
+            </div>
+        </div>
+        
+        <div class="chat-container">
+            <div id="messages" class="messages">
+                <!-- Beskeder vil blive indlæst dynamisk her -->
+                <div class="loading">Indlæser beskeder...</div>
+            </div>
+            
+            <div class="message-form">
+                <textarea id="message-input" placeholder="Skriv din besked her..."></textarea>
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="chat.js"></script>
+</body>
+</html> 

@@ -1,0 +1,12 @@
+{
+  "name": "eksempler",
+  "version": "1.0.0",
+  "description": "Express server examples",
+  "type": "module",
+  "main": "HelloExpressServer.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "pug": "^3.0.3"
+  }
+}

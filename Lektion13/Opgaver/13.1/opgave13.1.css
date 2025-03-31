@@ -1,0 +1,81 @@
+/* opgave13.1.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #e63946;
+  margin-bottom: 30px;
+}
+
+#loading {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 20px;
+  background-color: #f1faee;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table#earthquakeTable {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+thead {
+  background-color: #1d3557;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f1faee;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody tr:nth-child(even):hover {
+  background-color: #f1faee;
+}
+
+/* Cell for magnitude */
+td:first-child {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Message when no data */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #777;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  table#earthquakeTable {
+    font-size: 0.9rem;
+  }
+  
+  th, td {
+    padding: 8px 10px;
+  }
+}

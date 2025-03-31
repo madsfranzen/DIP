@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Opgave 11.1</title>
+  <script src="opgave11.1.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    button {
+      padding: 8px 12px;
+      margin-right: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    #userContainer {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>User Data from JSONPlaceholder API</h1>
+<p>Click one of the buttons below to fetch and display user data:</p>
+<div>
+  <button onclick="myAsync()">Fetch Users (async/await)</button>
+  <button onclick="fetchUsers(userUrl)">Fetch Users (promise)</button>
+</div>
+
+<h2>Users</h2>
+<div id="userContainer">
+  <!-- User table will be inserted here -->
+</div>
+
+</body>
+</html>

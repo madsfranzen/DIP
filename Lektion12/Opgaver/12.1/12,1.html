@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opgave 12.1</title>
+    <script src="12,1.js" defer></script>
+</head>
+<body>
+    <h1>Opgave 12.1</h1>
+    <div class="container">
+        <div class="clock-container">
+            <div id="clock">00:00:00</div>
+        </div>
+        <div class="button-container">
+            <button id="startBtn">Start ⏱️</button>
+            <button id="stopBtn">Stop ⏹️</button>
+            <button id="resetBtn">Reset 🔄</button>
+        </div>
+    </div>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        
+        .clock-container {
+            margin-bottom: 20px;
+        }
+        
+        #clock {
+            font-size: 3rem;
+            font-weight: bold;
+            background-color: #f5f5f5;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        #startBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        #stopBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        #resetBtn {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+    </style>
+</body>
+</html>

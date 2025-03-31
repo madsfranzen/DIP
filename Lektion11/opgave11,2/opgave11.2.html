@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opgave 11.2</title>
+  <script src="opgave11.2.js" defer></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray: #9ca3af;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f6f7ff 0%, #e9f0ff 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 1.5rem 0;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 6px rgba(99, 102, 241, 0.25);
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(99, 102, 241, 0.3);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button::before {
+      content: '📋';
+      font-size: 1.1rem;
+    }
+
+    #userContainer {
+      margin-top: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    thead {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    th {
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid #e5e7eb;
+      color: var(--dark);
+    }
+
+    tbody tr {
+      transition: all 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background-color: rgba(99, 102, 241, 0.05);
+      cursor: pointer;
+    }
+
+    tbody tr.selected {
+      background-color: rgba(99, 102, 241, 0.1);
+      border-left: 4px solid var(--primary);
+    }
+
+    #postsContainer {
+      background-color: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    #postsContainer h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #postsContainer h2::before {
+      content: '💬';
+      color: var(--secondary);
+    }
+
+    /* Loading state */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      color: var(--gray);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .loading::before {
+      content: '⏳';
+      margin-right: 12px;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Error state */
+    .error {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--danger);
+      margin: 1rem 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .error::before {
+      content: '⚠️';
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* No data state */
+    .no-data {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning);
+      margin: 1rem 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .no-data::before {
+      content: '🚫';
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    /* Animation for new content */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #userContainer, #postsContainer {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    /* Highlight for table cells */
+    tbody tr td:first-child {
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Style for post titles */
+    #postsContainer tbody tr td:nth-child(2) {
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+
+    /* Style for post bodies */
+    #postsContainer tbody tr td:nth-child(3) {
+      color: #4b5563;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Gradient background for header */
+    thead {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+    }
+
+    /* Subtle hover effect for button */
+    button:hover::before {
+      animation: bounce 0.5s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Users and Posts</h1>
+    <button onclick="fetchUsers()">Fetch Users</button>
+    <div id="userContainer">
+      <!-- User table will be inserted here -->
+    </div>
+  </div>
+</body>
+
+</html>
