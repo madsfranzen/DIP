@@ -1,74 +1,101 @@
 /* Clean and modern styling */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-:root {
-    --primary-color: #2563eb;
-    --text-color: #1f2937;
-    --bg-color: #f9fafb;
-    --border-color: #e5e7eb;
-    --hover-color: #f3f4f6;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.5;
-    margin: 0;
+    background: #f5f7fa;
     padding: 2rem;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--text-color);
+.title {
     text-align: center;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.025em;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 table {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    border-collapse: collapse;
 }
 
 th, td {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #edf2f7;
 }
 
 th {
-    background-color: #f8fafc;
+    background: #f7fafc;
     font-weight: 600;
-    color: #4b5563;
-    text-transform: uppercase;
+    color: #4a5568;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.user-title {
     font-size: 0.875rem;
-    letter-spacing: 0.05em;
+    color: #718096;
 }
 
-tr:last-child td {
-    border-bottom: none;
+.email, .phone {
+    color: #4299e1;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-tr {
-    transition: background-color 0.2s ease;
+.email:hover, .phone:hover {
+    color: #2b6cb0;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+}
+
+.city {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.country {
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+.coordinates {
+    color: #a0aec0;
+    font-size: 0.75rem;
 }
 
 tr:hover {
-    background-color: var(--hover-color);
-}
-
-td {
-    color: var(--text-color);
-    font-size: 1rem;
+    background: #f7fafc;
 }
 
 /* Subtle animations */

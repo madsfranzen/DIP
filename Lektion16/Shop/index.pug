@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="Content-Security-Policy", content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src * data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; connect-src *;")
+        title Tech Shop 🛍️
+        link(rel="icon", type="image/svg+xml", href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>")
+        link(rel="stylesheet", href="style.css")
+        script(src="index.js")
+
+    body
+        .user-section
+            if user
+                .user-info
+                    span.user-greeting Welcome, #{user.username}! 👋
+                    a.logout-button(href='/logout') Logout 🚪
+            else
+                .user-info
+                    a.login-button(href='/login') Login 🔐
+        .main-content
+            h1 Welcome to Tech Shop 🛍️
+            .products-grid
+                each product in products
+                    .product-card(onclick='clickfunction(' + product.id + ')')
+                        img.product-image(src=product.image alt=product.name)
+                        .product-info
+                            span.product-category= product.category
+                            h2.product-name= product.name
+                            p.product-description= product.description
+                            .product-price $#{product.price}
+        
+        .cart-section
+            p Your Shopping Cart 🛒
+            if cart.length > 0
+                ul
+                    each productId in cart
+                        - const product = products.find(p => p.id === productId)
+                        li
+                            .cart-item-info
+                                a(href='/product/' + productId) #{product.name}
+                                .cart-item-price $#{product.price.toFixed(2)}
+                            button.remove-item(onclick='removeFromCart(' + productId + ')') ×
+                .cart-total
+                    span Total:
+                    span.total-amount $#{cart.reduce((sum, productId) => sum + products.find(p => p.id === productId).price, 0).toFixed(2)}
+            else
+                .empty-cart
+                    p Your cart is empty 😢
+                    p.empty-cart-message Start shopping to add items to your cart! 🛍️
+    

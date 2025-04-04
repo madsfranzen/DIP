@@ -1,16 +1,30 @@
 link(rel='stylesheet', type='text/css', href='/style.css')
 
 body 
-    h1 Users
-table
-    tr
-        th Name
-        th Email
-        th Phone
-        th Location
-    each user in users
-        tr
-            td= user.name.first + " " + user.name.last
-            td= user.email
-            td= user.phone
-            td= user.location.city + ", " + user.location.state + ", " + user.location.country
+    h1.title Danish Users Directory 👥
+    .container
+        table
+            thead
+                tr
+                    th Profile
+                    th Name
+                    th Email
+                    th Phone
+                    th Location
+            tbody
+                each user in users
+                    tr
+                        td
+                            img.profile-pic(src=user.picture.medium alt=`${user.name.first} ${user.name.last}`)
+                        td
+                            .user-name= user.name.first + " " + user.name.last
+                            .user-title= user.name.title
+                        td
+                            a.email(href=`mailto:${user.email}`)= user.email
+                        td
+                            a.phone(href=`tel:${user.phone}`)= user.phone
+                        td
+                            .location
+                                .city= user.location.city
+                                .country= user.location.country
+                                .coordinates= `${user.location.coordinates.latitude}, ${user.location.coordinates.longitude}`
