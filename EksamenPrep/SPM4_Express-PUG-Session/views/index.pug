@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Personliste
+    meta(charset='utf-8')
+    script(src="/index.js" defer)
+    link(rel="stylesheet", href="/style.css")
+  body
+    h1 Tilføj person
+
+    form#personForm
+      label(for="navn") Navn:
+      input#navn(type="text", name="navn", required)
+      br
+      label(for="adresse") Adresse:
+      input#adresse(type="text", name="adresse", required)
+      br
+      button#submitBtn(type="submit") Tilføj person
+
+    if personer.length
+      h2 Liste over personer
+      table(border="1")
+        tr
+          th Navn
+          th Adresse
+        each person in personer
+          tr
+            td= person.navn
+            td= person.adresse
+    else
+      p Ingen personer er endnu tilføjet.
+
