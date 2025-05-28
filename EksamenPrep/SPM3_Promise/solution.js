@@ -33,6 +33,7 @@ async function proevFlereGange(attempts) {
 
 // Kør funktionen
 proevFlereGange(1000)
-	.then(number => console.log('🎉 Succes! Tallet er deleligt med 17:', number))
-	.catch(error => console.error('❌ Error:', error.message));
-
+	.then((number) =>
+		console.log('🎉 Succes! Tallet er deleligt med 17:', number)
+	)
+	.catch((error) => console.error('❌ Error:', error.message));
