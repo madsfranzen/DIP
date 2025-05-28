@@ -1,31 +1,38 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-// Pug view engine
+// Midlertidig kontaktliste i hukommelsen
+let contacts = [
+  { id: 1, name: 'Anna', phone: '12345678' },
+  { id: 2, name: 'Peter', phone: '87654321' },
+];
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
-const kontakter = [{navn : mads, telefonnummer:42339439}, {navn: bob, telefonnummer: 12345678}]
-
-// Routes
-app.get('/', (_req, res) => {
-	res.render('index', { kontakter: kontakter });
+// Forside med kontaktliste
+app.get('/', (req, res) => {
+  res.render('index', { contacts });
 });
 
-app.post('/tilfoej', (req, res) => {
-	const { navn, telefonnummer } = req.body;
-	kontakter.push({ navn: navn, telefonnummer: telefonnummer});
-	res.status(200).send('OK');
+// Opdater telefonnummer
+app.post('/update/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const newPhone = req.body.newPhone;
+
+  const contact = contacts.find(c => c.id === id);
+  if (contact && newPhone) {
+    contact.phone = newPhone;
+  }
+
+  res.redirect('/');
 });
 
-// Start server
-const PORT = 3000;
-app.listen(PORT, () => {
-	console.log(`Serveren kører på http://localhost:${PORT}`);
-});
+module.exports = app;
+

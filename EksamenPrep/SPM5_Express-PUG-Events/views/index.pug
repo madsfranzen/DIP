@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Kontaktliste
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Kontaktliste
+
+    ul
+      each contact in contacts
+        li
+          strong= contact.name
+          |  - 
+          span= contact.phone
+          form(action=`/update/${contact.id}` method="POST" style="display:inline")
+            input(type="text" name="newPhone" placeholder="Nyt nummer")
+            button(type="submit") Opdater
+
+    hr
+

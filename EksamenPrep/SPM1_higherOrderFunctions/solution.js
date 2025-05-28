@@ -41,7 +41,7 @@ console.log(carsWithLargestWheeels);
 console.log('Cars sorteret efter antal hjul:');
 const carsByWheels = carArray.reduce((acc, car) => {
 	const wheels = car.numWheels;
-	if (!acc[wheels]) {
+	if (acc[wheels]) {
 		acc[wheels] = [];
 	}
 	acc[wheels].push(car);
