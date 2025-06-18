@@ -1,5 +1,14 @@
 console.clear();
-// console.log('main.js\n');
+
+class Person {
+	age;
+	height;
+
+	constructor(age, height) {
+		this.age = age;
+		this.height = height;
+	}
+}
 
 function randomNumber(ceiling) {
 	let numberOfCalls = 0;
@@ -10,16 +19,6 @@ function randomNumber(ceiling) {
 		},
 		getNumberOfCalls: () => numberOfCalls,
 	};
-}
-
-class Person {
-	age;
-	height;
-
-	constructor(age, height) {
-		this.age = age;
-		this.height = height;
-	}
 }
 
 const ageGenerator = randomNumber(100);
