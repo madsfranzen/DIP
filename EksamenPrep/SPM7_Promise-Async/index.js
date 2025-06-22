@@ -28,7 +28,6 @@ async function fetchAllQuotes() {
 
 function displayQuotes(quotes) {
 	let html = '';
-
 	quotes.forEach((quoteData) => {
 		html += `
             <div class="quote">

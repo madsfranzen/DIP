@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// Midlertidig kontaktliste i hukommelsen
 let contacts = [
   { id: 1, name: 'Anna', phone: '12345678' },
   { id: 2, name: 'Peter', phone: '87654321' },
@@ -16,8 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-// Forside med kontaktliste
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.render('index', { contacts });
 });
 
